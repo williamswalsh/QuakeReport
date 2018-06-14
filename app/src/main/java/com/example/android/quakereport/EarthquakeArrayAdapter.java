@@ -14,10 +14,13 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class EarthquakeArrayAdapter extends ArrayAdapter<Earthquake> {
 
-    public EarthquakeArrayAdapter(@NonNull Context context, @NonNull ArrayList<Earthquake> earthquakes) {
+    private List<Earthquake> earthquakes = new ArrayList<Earthquake>();
+
+    public EarthquakeArrayAdapter(@NonNull Context context, @NonNull List<Earthquake> earthquakes) {
         super(context, 0, earthquakes);
     }
 

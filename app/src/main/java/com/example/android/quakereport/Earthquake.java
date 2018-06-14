@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * This class stores the data for a single earthquake instance.
- *
+ * <p>
  * Note:
  * USGS -> United States Geological Survey
  */
@@ -36,7 +36,8 @@ public class Earthquake {
     /**
      * Constructs a new {@link Earthquake} object.
      */
-    public Earthquake() {}
+    public Earthquake() {
+    }
 
     /**
      * @return The USGS url for this earthquake
@@ -59,6 +60,10 @@ public class Earthquake {
         return locationOffset;
     }
 
+    public void setLocationOffset(String locationOffset) {
+        this.locationOffset = locationOffset;
+    }
+
     /**
      * @return Location of earthquake
      */
@@ -73,6 +78,17 @@ public class Earthquake {
         return magnitude;
     }
 
+    public void setMagnitude(double magnitude) {
+        // Acceptable Range 0-12
+        // Only sets values within range, default value otherwise
+        if (magnitude > RICHTER_SCALE_MIN && magnitude < RICHTER_SCALE_MAX) {
+            this.magnitude = magnitude;
+        } else {
+            Log.d("Earthquake", "setMagnitude: Magnitude value passed to setMagnitude is out of range. (>12 or <0) ");
+
+        }
+    }
+
     /**
      * @return The time in milliseconds (since the epoch) when the earthquake occurred
      */
@@ -80,27 +96,12 @@ public class Earthquake {
         return timeInMillis;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setLocationOffset(String locationOffset) {
-        this.locationOffset = locationOffset;
-    }
-
-    public void setMagnitude(double magnitude) {
-        // Acceptable Range 0-12
-        // Only sets values within range, default value otherwise
-        if(magnitude > RICHTER_SCALE_MIN && magnitude < RICHTER_SCALE_MAX){
-            this.magnitude = magnitude;
-        }else{
-            Log.d("Earthquake", "setMagnitude: Magnitude value passed to setMagnitude is out of range. (>12 or <0) ");
-
-        }
-    }
-
     public void setTimeInMillis(long timeInMillis) {
         this.timeInMillis = timeInMillis;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     @Override
